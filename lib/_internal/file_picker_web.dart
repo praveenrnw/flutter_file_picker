@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:js_interop';
 import 'dart:typed_data';
 
+import 'package:file_picker/_internal/js_interop_web.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:web/web.dart';
@@ -97,6 +98,8 @@ class FilePickerWeb extends FilePicker {
           readStream: readStream,
           readStreamChunk: readStreamChunk,
         ));
+
+        setSelectedFileObjects(file as JSAny);
 
         if (pickedFiles.length >= files.length) {
           if (onFileLoading != null) {
